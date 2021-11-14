@@ -33,5 +33,9 @@ Une commande “help” permettant d’avoir les différentes commandes disponib
 <h4>Aymar</h4>
 Un choix de la langue pour les articles retournés par la commande “news”
 
+
+<b>Branche developpement</b><br>
+Sert à ajouter les améliorations continues. La branche main sera pour les versions stables du module.
+
 <h4>Kevin</h4>
 Une commande “info” permettant d’avoir des informations concernant le module. 
