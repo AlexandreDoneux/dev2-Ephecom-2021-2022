@@ -6,7 +6,7 @@ Kevin Keurvels, Aymar Davy, Serge Folly, Alexandre Doneux
 
 
 
-<b>À faire pour fin de semaine du 15/11</b>
+<b>À faire pour fin de semaine du 15/11</b><br><hr>
 ///Serge
 Une commande “itiner” permettant d’avoir des informations concernant le chemin d’un point A à un point B. 
 
@@ -23,7 +23,7 @@ Une commande permettant d’afficher la date.
 
 Une commande permettant d’afficher l’heure. 
 
-<b>À faire pour fin de semaine du 22/11</b>
+<b>À faire pour fin de semaine du 22/11</b><br><hr>
 ///Serge 
 Une commande affichant les restaurants et bars à proximités. 
 
