@@ -4,9 +4,9 @@ Projet du cours de développement informatique 2 2021-2022. Ce projet est un cha
 Groupe 2TL1-1
 Kevin Keurvels, Aymar Davy, Serge Folly, Alexandre Doneux
 
-<h1>Planning pour les membres du groupe</h1>
+<h2>Planning pour les membres du groupe</h2>
 
-<h2>À faire pour fin de semaine du 15/11</h2><br><hr>
+<h3>À faire pour fin de semaine du 15/11</h3>
 
 <h4>Serge</h4>
 Une commande “itiner” permettant d’avoir des informations concernant le chemin d’un point A à un point B. 
@@ -18,13 +18,12 @@ Une/Des Commande(s) permettant d’ouvrir un site/navigateur et d’effectuer un
 Une commande “news” qui nous donnera des articles de presse avec possibilité d’avoir un sujet précis.
 
 <h4>Kevin</h4>
-fonction met parfaite string
-
-Une commande permettant d’afficher la date. 
-
-Une commande permettant d’afficher l’heure. 
-
-<h2>À faire pour fin de semaine du 22/11</h2><br><hr>
+<ul>
+  <li>Une fonction enlevant (pour la commande rentrée) les accents et mettant tout en miniscule</li>
+  <li>Une commande permettant d’afficher la date. </li>
+  <li>Une commande permettant d’afficher l’heure. </li>
+</ul>
+<h3>À faire pour fin de semaine du 22/11</h3>
 <h4>Serge</h4>
 Une commande affichant les restaurants et bars à proximités. 
 
