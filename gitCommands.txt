@@ -1,0 +1,8 @@
+en ligne de commande:
+git clone adresseCopiéDepuisLeSiteDeGit
+git status => avoir des infos
+git add . (ou le nom du fichier) => empiller les feuilles
+git commit -m ="Le nom de la modification" => mise dans l'enveloppe
+git push => envoyer vers le serveur
+git pull => maj des données
+
