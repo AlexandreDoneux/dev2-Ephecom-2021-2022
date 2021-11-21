@@ -26,7 +26,12 @@ class Research():
         if self.url == "":
             print("L'URL est vide")
             return(-1)
-        webbrowser.open(self.url)
+        try:
+            webbrowser.open(self.url) # besoin d'un controle d'erreur
+        except:
+            print("Problème de connexion. Nous ne pouvons pas joindre l'url")
+
+# ----------------------------------
 
 class Linkedin(Research):
     def __init__(self, *arguments):
@@ -82,6 +87,7 @@ class Youtube(Research):
 # Ou est-ce que c'est déjà fait grâce à la classe parent ? -> apparement non
 
 if __name__ == "__main__" :
+    """
     ma_recherche = Wikipedia("mémoire", "partagée")
 
     print(ma_recherche)
@@ -94,4 +100,9 @@ if __name__ == "__main__" :
     ma_recherche2.create_url_youtube()
     print(ma_recherche2.url)
     ma_recherche2.go_to_site()
+    
+    """
+    ma_recherche2 = Wikipedia("mémoire")
+    ma_recherche2.go_to_site()
 
+# idées d'autres sites
