@@ -35,3 +35,5 @@ Un choix de la langue pour les articles retournés par la commande “news”
 
 <h4>Kevin</h4>
 Une commande “info” permettant d’avoir des informations concernant le module. 
+<br><br>
+<h3>ATTENTION: voir si l'utilisateur a une connexion à Internet</h3>
