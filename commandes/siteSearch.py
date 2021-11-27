@@ -8,8 +8,12 @@ import webbrowser
 
 class Research():
     def __init__(self, *arguments):
+        """
+        :param: *arguments : str - ensemble des mots de la recherche
+        :return: none
+        """
         self.site = ""
-        self.url = ""
+        #self.url = ""
         self.arguments = list(*arguments)
 
 # Pas vraiment besoin de getter et setter, vu qu'on y accède que depuis l'interieur de la classe
@@ -23,6 +27,13 @@ class Research():
         return("On fait la recherche : " + recherche + " sur le site " + self.site)
 
     def go_to_site(self):
+        """
+        Ouvre un nouvel onglet du navigateur de l'utilisateur et fait la recherche voulue sur le site voulu
+        :param: none
+        :return: none
+        :raises: ValueError
+                    - si l'url est vide
+        """
         if self.url == "":
             print("L'URL est vide")
             return(-1)
@@ -31,15 +42,30 @@ class Research():
         except:
             print("Problème de connexion. Nous ne pouvons pas joindre l'url")
 
+        # Mieux faire le contrôle d'erreurs. Dois-je mettre un contrôle sur le problème de connexion ? Normalement non.
+        # webbrowser ouvre seulement le navigateur et lance la recherche. Si il n'y a pas de connexion python ne peut
+        # pas s'en rendre compte
+
 # ----------------------------------
 
 class Linkedin(Research):
     def __init__(self, *arguments):
+        """
+        :param: *arguments : str - ensemble des mots de la recherche
+        :return: none
+        """
         self.site = "Linkedin"
         self.url = ""
         self.arguments = list(arguments)
 
     def create_url_linkedin(self):
+        """
+        Crée l'url de recherche spécifique à Linkedin en fonction des *arguments. Mets cette url dans l'attribut
+        self.url de la classe
+        :param: none
+        :return: none
+        """
+
         # Recherche "Charles Doneux" -> https://fr.linkedin.com/pub/dir?firstName=Charles&lastName=Doneux&trk=public_profile_people-search-bar_search-submit
         if len(self.arguments) != 2:
             print("Utilisez 2 arguments pour la recherche Linkedin : nom et prénom.")
@@ -55,11 +81,22 @@ class Linkedin(Research):
 
 class Wikipedia(Research):
     def __init__(self, *arguments):
+        """
+        :param: *arguments : str - ensemble des mots de la recherche
+        :return: none
+        """
         self.site = "Wikipedia"
         self.url = ""
         self.arguments = list(arguments)
 
     def create_url_wikipedia(self):
+        """
+        Crée l'url de recherche spécifique à Wikipedia en fonction des *arguments. Mets cette url dans l'attribut
+        self.url de la classe
+        :param: none
+        :return: none
+        """
+
         # Recherche "repertoire courant" -> https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search=repertoire+courant&go=Go&ns0=1
         self.url = "https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search="
         for i in self.arguments:
@@ -70,11 +107,22 @@ class Wikipedia(Research):
 
 class Youtube(Research):
     def __init__(self, *arguments):
+        """
+        :param: *arguments : str - ensemble des mots de la recherche
+        :return: none
+        """
         self.site = "Youtube"
         self.url = ""
         self.arguments = list(arguments)
 
     def create_url_youtube(self):
+        """
+        Crée l'url de recherche spécifique à Youtube en fonction des *arguments. Mets cette url dans l'attribut
+        self.url de la classe
+        :param: none
+        :return: none
+        """
+
         # Recherche "thomas va bien" -> https://www.youtube.com/results?search_query=thomas+va+bien
         self.url = "https://www.youtube.com/results?search_query="
         for i in self.arguments:
@@ -103,6 +151,7 @@ if __name__ == "__main__" :
     
     """
     ma_recherche2 = Wikipedia("mémoire")
+    ma_recherche2.create_url_wikipedia()
     ma_recherche2.go_to_site()
 
 # idées d'autres sites
