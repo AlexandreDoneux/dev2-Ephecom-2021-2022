@@ -20,20 +20,17 @@ class Help:
         self.help_weather = ""
         self.help_news = ""
         self.help_itinerary = ""
-        self.help_research = ""
+        self.help_research = "/{site} research\n Commande permettant une recherche sur {site}. research est la"\ 
+                            "recherche, la phrase que vous voulez rechercher."
         self.help_restaurant = ""
-        self.help_show_info = """
-                        Aide de la commande info\nDescription: commande permettant d'afficher des informations sur le 
-                        module de chatbot multimédia\nUtilisation: /info\n
-                        """
-        self.help_time = """
-                        Aide de la commande time\nDescription: commande permettant d'afficher l'heure au format anglais
-                        ou français (par défaut, l'affichage est en français)\n
-                        Utilisation: /time [eng ou fr]\n[]: paramètre optionnel\n 
-                        """
+        self.help_info = "Aide de la commande info\nDescription: commande permettant d'afficher des informations"\ 
+                            "sur le module de chatbot multimédia\nUtilisation: /info\n"
+        self.help_time = "Aide de la commande time\nDescription: commande permettant d'afficher l'heure au format"\
+                        "anglais ou français (par défaut, l'affichage est en français)\n" \
+                        "Utilisation: /time [eng ou fr]\n[]: paramètre optionnel\n"
 
-        self.help_date = "Aide de la commande date\nDescription: commande permettant d'afficher la date au format anglais" \
-                         " ou français (par défaut, l'affichage est en français)\n" \
+        self.help_date = "Aide de la commande date\nDescription: commande permettant d'afficher la date au format" \
+                         "anglais ou français (par défaut, l'affichage est en français)\n" \
                          "Utilisation: /date [eng ou fr]\n[]: paramètre optionnel\n"
 
         # meilleur configuration ?
@@ -41,8 +38,9 @@ class Help:
                          "format anglais ou français (par défaut, l'affichage est en français)\n"
 
         self.command_help_correspond = {"weather": self.help_weather, "news": self.help_news,
-                                        "itinerary": self.help_itinerary, "research": self.help_research,
-                                        "restaurant": self.help_restaurant, "showinfo": self.help_show_info,
+                                        "itinerary": self.help_itinerary, "linkedin": self.help_research,
+                                        "youtube": self.help_research, "wikipedia": self.help_research,
+                                        "restaurant": self.help_restaurant, "info": self.help_info,
                                         "time": self.help_time, "date": self.help_date}
 
 
@@ -58,10 +56,18 @@ class Help:
             if self.command == "all" :
                 command_keys = self.command_help_correspond.keys()
                 for i in command_keys:
-                    self.help_text += self.command_help_correspond[i] + "\n"
+                    if self.command in ["linkedin", "youtube", "wikipedia"]:
+                        print(self.command_help_correspond[i].format(site = i))
+                        self.help_text += self.command_help_correspond[i].format(site= i)
+                    else:
+                        self.help_text += self.command_help_correspond[i] + "\n"
 
             else:
-                self.help_text += self.command_help_correspond[self.command]
+                if self.command in ["linkedin", "youtube", "wikipedia"]:
+                            print(self.command_help_correspond[self.command].format(site= self.command))
+
+                else:
+                    self.help_text += self.command_help_correspond[self.command]
 
             return(self.help_text)
 
@@ -72,7 +78,7 @@ class Help:
 
 if __name__ == "__main__":
 
-    my_help = Help("date")
+    my_help = Help("youtube")
     print(my_help)
 
     #my_second_help = Help()
