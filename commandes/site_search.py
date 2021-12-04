@@ -6,6 +6,8 @@
 
 import webbrowser
 
+dict_char_to_url_code={"'": "%27", '"': "%22",  "[": "%5B", "]": "%5D", "{": "%7B", "}": "%7D", "+": "%2B", "<": "%3C", ">": "%3E", "&": "%26"}
+
 class Research():
     def __init__(self, *arguments):
         """
@@ -71,8 +73,8 @@ class Linkedin(Research):
             print("Utilisez 2 arguments pour la recherche Linkedin : nom et prénom.")
             return(-1)
 
-        self.url = ("https://fr.linkedin.com/pub/dir?firstName="+self.arguments[0]+"&lastName="+self.arguments[1]+
-                        "&trk=public_profile_people-search-bar_search-submit")
+        self.url = ("https://fr.linkedin.com/pub/dir?firstName="+'+'.join((self.arguments[0]).split())+"+&lastName="+
+                    "+".join((self.arguments[1]).split())+"&trk=public_profile_people-search-bar_search-submit")
 
     # problème Linkedin : Il faut s'inscrire
     # problème d'accents dans les url
@@ -130,6 +132,11 @@ class Youtube(Research):
             if self.arguments.index(i) != len(self.arguments)-1 :  # Ajoute un "+" après chaque terme sauf le dernier
                 self.url += "+"
 
+        """ # Remplacement ne marche pas
+        for i in dict_char_to_url_code.keys():
+            self.url.replace(i, dict_char_to_url_code[i])
+            print(self.url)
+        """
 
 # Dois-je mettre l'initialisation de toutes les variables dans le init des classes enfant ?
 # Ou est-ce que c'est déjà fait grâce à la classe parent ? -> apparement non
@@ -142,16 +149,18 @@ if __name__ == "__main__" :
     ma_recherche.create_url_wikipedia()
     ma_recherche.go_to_site()
 
+    """
     ma_recherche2 = Youtube("salut", "c'est", "cool")
 
     print(ma_recherche2)
     ma_recherche2.create_url_youtube()
     print(ma_recherche2.url)
     ma_recherche2.go_to_site()
-    
     """
+    
     ma_recherche2 = Wikipedia("mémoire")
     ma_recherche2.create_url_wikipedia()
     ma_recherche2.go_to_site()
-
+    """
 # idées d'autres sites
+
