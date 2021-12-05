@@ -6,7 +6,7 @@ Kevin Keurvels, Aymar Davy, Serge Folly, Alexandre Doneux
 
 <h2>Planning pour les membres du groupe</h2>
 
-<h3>À faire pour fin de semaine du 29/11</h3>
+<h3>À faire pour fin de semaine du 06/12</h3>
 <h4>Serge</h4>
 Faire la commande affichant les restaurants (et bars) à proximités. 
 
@@ -18,7 +18,6 @@ Faire les test unitaires
 Faire les test unitaires
 
 <h4>Kevin</h4>
-Faire les test unitaires
+voir pour requirements.txt
 <br><br>
 <h3>ATTENTION: voir si l'utilisateur a une connexion à Internet</h3>
-<h3>ATTENTION: voir pour requirements.txt</h3>
