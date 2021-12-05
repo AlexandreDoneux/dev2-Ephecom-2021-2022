@@ -1,3 +1,5 @@
+# coding:utf-8
+
 """
 HAKIZIMANA Aymar Davy
 2TL1
@@ -74,5 +76,7 @@ class News:
 
 identNational = str(input("Entre le code national du pays :"))
 n = int(input("Introduisez le nombre d'article du jour que vous voulez voir :"))
-n1 = News(identNational,n)
-n1.news_Of_To_Day()
+
+if __name__=='__main__':
+    n1 = News(identNational,n)
+    n1.news_Of_To_Day()
