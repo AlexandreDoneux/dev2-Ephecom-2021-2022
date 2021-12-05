@@ -35,8 +35,7 @@ class News:
 
     def news_Of_To_Day(self):
         """
-
-        :return:
+        :return:Il va renvoyer les articles selon le nombre d'articles que l'utilisateur aura demander
         """
         api_key = "bb2385450c984f4bacd087cf8df470c3"
         url = "https://newsapi.org/v2/top-headlines?country="+self.code+"&category=business&apiKey=" + api_key
