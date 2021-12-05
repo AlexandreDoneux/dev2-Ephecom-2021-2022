@@ -2,22 +2,30 @@ from datetime import datetime as date
 
 
 class Date:
-    def __init__(self, fr=True):
+    def __init__(self, fr=True, present_day=date.now()):
+        """
+        Fonction appelée à la création de la date
+        :param fr:  un boolean étant à True si on veut la date en français ou False si on la veut en anglais
+        :param present_day: contiendra la date à afficher
+        """
         self.__fr = fr
-        self.__day_name = date.now().strftime("%A")
-        self.__day_number = date.now().strftime("%d")
-        self.__month_name = date.now().strftime("%B")
-        self.__year_number = date.now().strftime("%G")
+        self.__day_name = present_day.strftime("%A")
+        self.__day_number = present_day.strftime("%d")
+        self.__month_name = present_day.strftime("%B")
+        self.__year_number = present_day.strftime("%G")
         self.__date_completed = ""
         self.calculate_date()
 
     def __str__(self):
+        """
+        Fonction appelée quand on veut afficher la date
+        :return: une String contenant une phrase disant la date
+        """
         return self.__date_completed
 
     def calculate_date(self):
         """
         Fonction qui stock une string donnant la date du jour dans self.__date_completed
-        :param: self contenant les informations
         """
         if self.__fr:
             self.__day_name = self.__day_name.replace("Monday", "Lundi")
@@ -47,7 +55,7 @@ class Date:
         else:
             self.__date_completed = f"We are {self.__day_name} the {self.__day_number}th" \
                                     f" of {self.__month_name} {self.__year_number}"
-        
+
 
 """Examples
 date1 = Date()
@@ -56,4 +64,7 @@ date2 = Date(False)
 print(date2)
 """
 
-
+"""help_date = "Aide de la commande date\nDescription: commande permettant d'afficher la date au format anglais" \
+            " ou français (par défaut, l'affichage est en français)\n" \
+            "Utilisation: /date [eng ou fr]\n[]: paramètre optionnel\n"
+print(help_date)"""

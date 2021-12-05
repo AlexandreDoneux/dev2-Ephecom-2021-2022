@@ -22,7 +22,7 @@ def give_good_command(command):
         'ÿ': 'y'
     }
 
-    min_command = command.lower()
+    min_command = str(command).lower()
     for i in min_command:
         for j in dico_changment.keys():
             if i == j:
@@ -52,6 +52,5 @@ def give_good_command(command):
 """ Examples
 print(give_good_command("/MétèO"))
 print(give_good_command("/éèëêàâäçîïôöûüÿ"))
-"""
 print(give_good_command("/MétèO"))
-print(give_good_command("/éèëêàâäçîïôöûüÿ"))
+"""
