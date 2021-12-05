@@ -132,11 +132,11 @@ class Youtube(Research):
             if self.arguments.index(i) != len(self.arguments)-1 :  # Ajoute un "+" après chaque terme sauf le dernier
                 self.url += "+"
 
-        """ # Remplacement ne marche pas
+         # Remplacement ne marche pas
         for i in dict_char_to_url_code.keys():
             self.url.replace(i, dict_char_to_url_code[i])
-            print(self.url)
-        """
+
+
 
 # Dois-je mettre l'initialisation de toutes les variables dans le init des classes enfant ?
 # Ou est-ce que c'est déjà fait grâce à la classe parent ? -> apparement non
@@ -156,7 +156,12 @@ if __name__ == "__main__" :
     ma_recherche2.create_url_youtube()
     print(ma_recherche2.url)
     ma_recherche2.go_to_site()
+    
     """
+    a = "https://www.youtube.com/results?search_query=salut+c'est+cool"
+    b = a.replace("'", "%27")
+    print(a,b)
+
     
     ma_recherche2 = Wikipedia("mémoire")
     ma_recherche2.create_url_wikipedia()
