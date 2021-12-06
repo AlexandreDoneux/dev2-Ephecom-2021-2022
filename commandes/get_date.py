@@ -8,13 +8,16 @@ class Date:
         :param fr:  un boolean étant à True si on veut la date en français ou False si on la veut en anglais
         :param present_day: contiendra la date à afficher
         """
-        self.__fr = fr
-        self.__day_name = present_day.strftime("%A")
-        self.__day_number = present_day.strftime("%d")
-        self.__month_name = present_day.strftime("%B")
-        self.__year_number = present_day.strftime("%G")
-        self.__date_completed = ""
-        self.calculate_date()
+        if isinstance(fr, bool):
+            self.__fr = fr
+            self.__day_name = present_day.strftime("%A")
+            self.__day_number = present_day.strftime("%d")
+            self.__month_name = present_day.strftime("%B")
+            self.__year_number = present_day.strftime("%G")
+            self.__date_completed = ""
+            self.calculate_date()
+        else:
+            raise TypeError
 
     def __str__(self):
         """
