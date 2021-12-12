@@ -3,6 +3,8 @@
 import unittest
 import datetime
 
+import get_date
+import get_time
 from get_date import Date
 from get_time import Time
 from get_clean_command import give_good_command
@@ -20,6 +22,14 @@ class DateTest(unittest.TestCase):
         self.assertEqual(Date(False, datetime.date(2021, 12, 2)).__str__(), "We are Thursday the 02th of December 2021",
                          "Date(False, datetime.date(2021, 12, 2)).__str__()")
 
+    def test_number(self):
+        """Vérification de l'affichage de la date avec le boolean valant un nombre"""
+        self.assertRaises(TypeError, get_date.Date, 2)
+
+    def test_String(self):
+        """Vérification de l'affichage de la date avec le boolean valant un chaine de caractéres"""
+        self.assertRaises(TypeError, get_date.Date, "Erreur")
+
 
 class TimeTest(unittest.TestCase):
     def test_fr(self):
@@ -31,6 +41,14 @@ class TimeTest(unittest.TestCase):
         """Vérification de l'affichage de l'heure en anglais"""
         self.assertEqual(Time(False, datetime.time(18, 45)).__str__(), "It's 6:45 PM",
                          "Date(False, datetime.date(2021, 12, 2))")
+
+    def test_number(self):
+        """Vérification de l'affichage de l'heure avec le boolean valant un nombre"""
+        self.assertRaises(TypeError, get_time.Time, 2)
+
+    def test_String(self):
+        """Vérification de l'affichage de l'heure avec le boolean valant un chaine de caractéres"""
+        self.assertRaises(TypeError, get_time.Time, "Erreur")
 
 
 class ShowInfoTest(unittest.TestCase):

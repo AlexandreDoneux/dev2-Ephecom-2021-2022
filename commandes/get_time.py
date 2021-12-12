@@ -8,9 +8,12 @@ class Time:
         :param fr: un boolean étant à True si on veut l'heure en français ou False si on la veut en anglais
         :param time: contiendra l'heure sur laquelle on veut travailler
         """
-        self.__fr = fr
-        self.__time_completed = ""
-        self.calculate_time(time)
+        if isinstance(fr, bool):
+            self.__fr = fr
+            self.__time_completed = ""
+            self.calculate_time(time)
+        else:
+            raise TypeError
 
     def __str__(self):
         """
