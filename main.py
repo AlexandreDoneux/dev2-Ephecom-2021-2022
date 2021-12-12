@@ -2,11 +2,17 @@
 # UTF-8
 import argparse
 
+import find_command
 
-from commandes import api_end_point, get_clean_command, get_date, get_news, get_time, help, show_info, site_search
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
+    parser.add_argument('-chatbot',
+                        nargs='+',
+                        type=str,
+                        dest='chatbot',
+                        help="Commandes du chatbot voulu"
+                        )
+
     args = parser.parse_args()
-    print(args)
+    find_command.find_command(args.chatbot)

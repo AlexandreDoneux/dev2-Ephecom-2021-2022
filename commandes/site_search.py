@@ -8,14 +8,14 @@ import webbrowser
 dict_char_to_url_code={"'": "%27", '"': "%22",  "[": "%5B", "]": "%5D", "{": "%7B", "}": "%7D", "+": "%2B", "<": "%3C", ">": "%3E", "&": "%26"}
 
 class Research():
-    def __init__(self, *arguments):
+    def __init__(self, arguments):
         """
-        :param: *arguments : str - ensemble des mots de la recherche
+        :param: arguments : list - liste contenant l'ensemble des mots de la recherche
         :return: none
         """
         self.site = ""
         #self.url = ""
-        self.arguments = list(*arguments)
+        self.arguments = arguments
 
 # Pas vraiment besoin de getter et setter, vu qu'on y accède que depuis l'interieur de la classe
 
@@ -50,14 +50,14 @@ class Research():
 # ----------------------------------
 
 class Linkedin(Research):
-    def __init__(self, *arguments):
+    def __init__(self, arguments):
         """
-        :param: *arguments : str - ensemble des mots de la recherche
+        :param: arguments : list - liste contenant l'ensemble des mots de la recherche
         :return: none
         """
         self.site = "Linkedin"
         self.url = ""
-        self.arguments = list(arguments)
+        self.arguments = arguments
 
     def create_url_linkedin(self):
         """
@@ -81,14 +81,14 @@ class Linkedin(Research):
     # besoin de créer une méthode à part ? Pourquoi ne pas le faire dans le __init__ ?
 
 class Wikipedia(Research):
-    def __init__(self, *arguments):
+    def __init__(self, arguments):
         """
-        :param: *arguments : str - ensemble des mots de la recherche
+        :param: arguments : list - liste contenant l'ensemble des mots de la recherche
         :return: none
         """
         self.site = "Wikipedia"
         self.url = ""
-        self.arguments = list(arguments)
+        self.arguments = arguments
 
     def create_url_wikipedia(self):
         """
@@ -107,14 +107,14 @@ class Wikipedia(Research):
         self.url += "&go=Go&ns0=1"
 
 class Youtube(Research):
-    def __init__(self, *arguments):
+    def __init__(self, arguments):
         """
-        :param: *arguments : str - ensemble des mots de la recherche
+        :param: arguments : list - liste contenant l'ensemble des mots de la recherche
         :return: none
         """
         self.site = "Youtube"
         self.url = ""
-        self.arguments = list(arguments)
+        self.arguments = arguments
 
     def create_url_youtube(self):
         """

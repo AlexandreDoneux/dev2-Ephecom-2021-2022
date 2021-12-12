@@ -12,7 +12,7 @@ class Itinerary(Commande):
     """
     def __init__(self, origin: str = "", destination: str = ""):
         self._origin = origin
-        self._destintion = destination
+        self._destination = destination
 
 
     def show_itinerary(self):
@@ -54,8 +54,8 @@ class Itinerary(Commande):
             print("Veuillez verifier votre connexion internet SVP")
         if stat =="OK":
             return True
-f = Itinerary()
-f.show_itinerary()
+"""f = Itinerary()
+f.show_itinerary()"""
 
 # Alfons Moerenhoutstraat 80, Overijse
 # Rue Saint Michel 37, Bruxelles
