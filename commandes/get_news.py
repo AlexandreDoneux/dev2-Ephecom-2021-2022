@@ -22,7 +22,7 @@ class color:
 
 
 class News:
-    def __init__(self, code="us", number=3):
+    def __init__(self, code="be", number=10):
 
         """
         :param national_code str: la personne entrera le code national du pays
@@ -105,7 +105,7 @@ class News:
 
 
 if __name__ == '__main__':
-    n1 = News("us", 2)
+    n1 = News()
     n1.news_Of_To_Day()
 
 
