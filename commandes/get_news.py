@@ -1,8 +1,5 @@
-"""
-HAKIZIMANA Aymar Davy
-2TL1
-Projet Dev2
-"""
+# python 3.10
+# UTF-8
 
 import requests
 from datetime import datetime

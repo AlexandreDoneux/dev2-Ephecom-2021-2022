@@ -1,3 +1,5 @@
+# python 3.10
+# UTF-8
 def give_good_command(command):
     """
     Fonction qui enlève tout les accents et les majuscules

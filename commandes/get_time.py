@@ -1,3 +1,5 @@
+# python 3.10
+# UTF-8
 from datetime import datetime as date
 
 

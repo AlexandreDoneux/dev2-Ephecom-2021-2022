@@ -1,3 +1,5 @@
+# python 3.10
+# UTF-8
 from pip._vendor import requests
 
 

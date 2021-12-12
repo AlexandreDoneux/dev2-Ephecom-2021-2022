@@ -1,3 +1,5 @@
+# python 3.10
+# UTF-8
 from unittest import TestCase
 from site_search import Wikipedia, Linkedin, Youtube
 

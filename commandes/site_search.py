@@ -1,6 +1,5 @@
 # python 3.10
-# alexandre Doneux
-# 20/11/2021
+# UTF-8
 
 # Définition des classes concernant la commande de recherche sur les sites pour le bot multimedia de Ephecom
 

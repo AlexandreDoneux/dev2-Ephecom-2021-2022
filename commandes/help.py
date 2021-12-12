@@ -1,6 +1,5 @@
-# alexandre Doneux
-# 22/11/2021
-# Ecrit en python 3.10
+# python 3.10
+# UTF-8
 
 # help est une commande permettant d'avoir des informations sur l'ensemble des commandes.
 # En indiquant spécifiquement une commande (ex: '/help get_date') on aura des informations sur ccette commande en particulier.

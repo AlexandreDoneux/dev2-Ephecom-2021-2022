@@ -1,3 +1,5 @@
+# python 3.10
+# UTF-8
 import requests
 import unittest
 from get_news import News
