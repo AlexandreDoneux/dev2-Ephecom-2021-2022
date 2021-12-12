@@ -17,7 +17,8 @@ class Help:
         self.help_text = ""
 
         self.help_weather = "Aide weather \n"
-        self.help_news = "Aide news \n"
+        self.help_news = "Aide de la commande news \n permettant à l'utilisateur une recherche sur les articles " \
+                         "du jour selon le pays disponible où il veut "
         self.help_itinerary = "Aide Itinerary \n"
         self.help_research = "/{site} research\nCommande permettant une recherche sur {site}. research est la " \
                              "recherche, la phrase que vous voulez rechercher. \n"
