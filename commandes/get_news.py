@@ -59,7 +59,7 @@ class News:
 
         self.code = input("Introduisez le code pays du quel vous voulez voir l'article: ")
         while self.code not in code_of_countries:
-            self.code = input("Veuillez entrer un code pays valide SVP!: ")
+            self.code = input("Veuillez entrer un code pays valide !: ")
         self.number = input("Combien d'articles voulez-vous? :  ")
 
         api_key = "bb2385450c984f4bacd087cf8df470c3"

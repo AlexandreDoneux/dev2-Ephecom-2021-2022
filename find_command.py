@@ -48,6 +48,3 @@ def find_command(argument):
 
     elif argument[0] == '/news':
          pass
-    elif argument[0] == '':
-        pass
-
