@@ -6,6 +6,9 @@ from datetime import datetime
 
 
 class Color:
+    """
+    Une class qui sers à manipuler l'affichage en gras ou en un autre couleur
+    """
     PURPLE = '\033[95m'
     CYAN = '\033[96m'
     DARKCYAN = '\033[36m'
@@ -22,6 +25,8 @@ class News:
     def __init__(self, code="be", number=10):
 
         """
+        C'est fonction qui va être appeler par la class News
+
         :param code str: la personne entrera le code national du pays
         :param number int: la personne entrera un nombre pour avoir le nombre d'article desirer
         """
@@ -37,8 +42,10 @@ class News:
 
     def news_of_to_day(self):
         """
+        Fonction qui servira pour l'affichage d'actualité du jour quelque descriptions
 
-        :return:
+        return: retourne l'actualité avec sa description selon le code national et le nombre d'articles
+                qui ont été introduit par l'utilisateur
         """
         code_of_countries = {"ae": "Émirats arabes unis",
                              "ar": "Argentine",
