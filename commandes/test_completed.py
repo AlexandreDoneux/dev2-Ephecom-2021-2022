@@ -11,6 +11,7 @@ from get_clean_command import give_good_command
 from show_info import ShowInfo
 from get_news import News
 from get_news import Color
+from help import Help
 
 
 # test_unit_kevin
@@ -122,5 +123,52 @@ class NewsTest(unittest.TestCase):
 # manque test_help et test_api_end_point
 
 
+class HelpTest(unittest.TestCase):
+
+    """ # à faire quand j'ai toutes les descriptions
+    def test_help_all(self):
+        result =""
+        self.assertEqual(result, Help().help_text)
+    """
+
+    def test_help_date(self):
+        """
+        teste les string qui sera renvoyé lors d'un print d'un objet Help avec une commande qui existe: date
+        """
+        result = "/date [eng/fr]      []: paramètre optionnel\n Commande permettant d'afficher la date au format " \
+                 "anglais ou français (par défaut, l'affichage est en français)\n"
+        self.assertEqual(result, str(Help("date")))
+
+    def test_help_itiner(self):
+        """
+        teste les string qui sera renvoyé lors d'un print d'un objet Help avec une commande qui existe: itiner
+        """
+        result = "/itiner\nPermet de trouver son trajet en faisant l'estimation du temps et de la distance \n"
+        self.assertEqual(result, str(Help("itiner")))
+
+    def test_help_youtube(self):
+        """
+        teste les string qui sera renvoyé lors d'un print d'un objet Help avec une commande qui existe: youtube
+        """
+        result = "/youtube research\nCommande permettant une recherche sur youtube. research est la recherche, la " \
+                 "phrase que vous voulez rechercher. \n"
+        self.assertEqual(result, str(Help("youtube")))
+
+    def test_help_wikipedia(self):
+        """
+        teste les string qui sera renvoyé lors d'un print d'un objet Help avec une commande qui existe: wikipedia
+        """
+        result = "/wikipedia research\nCommande permettant une recherche sur wikipedia. research est la recherche, " \
+                 "la phrase que vous voulez rechercher. \n"
+        self.assertEqual(result, str(Help("wikipedia")))
+
+    def test_wrong_command(self):
+        """
+        teste les string qui sera renvoyé lors d'un print d'un objet Help avec une commande qui n'existe pas.
+        Dans ce cas, à la création de l'objet une eexception NoSuchCommand doit être raise.
+        """
+        self.assertRaises(Exception, Help(), "testing")
+
+
 if __name__ == '__main__':
-    unittest.main()
+    pass

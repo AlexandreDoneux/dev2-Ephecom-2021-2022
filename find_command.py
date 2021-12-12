@@ -56,4 +56,17 @@ def find_command(argument):
     elif argument[0] == '/news':
         show_news = get_news.News()
         show_news.news_Of_To_Day()
+
+    elif argument[0] == "/help":
+        if len(argument) == 1:
+            print(help.Help())
+        elif len(argument) == 2:
+            argument[1] = get_clean_command.give_good_command(argument[1])
+            print(help.Help(argument[1]))
+        else:
+            print("Erreur. N'indiquez qu'une seule commande.")
+
+    # autre cas -> pas nos commandes
+    else:
+        pass
         
