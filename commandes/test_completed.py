@@ -78,6 +78,9 @@ class GoodCommandTest(unittest.TestCase):
         """Vérification de good_command avec un nombre passé en paramètre"""
         self.assertEqual(give_good_command("/éèëêàâäçîïôöûüÿ"), "/"
                          "eeeeaaaciioouuy", "give_good_command('/éèëêàâäçîïôöûüÿ')")
+    def test_boolean(self):
+        """Vérification de good_command avec un nombre passé en paramètre"""
+        self.assertEqual(give_good_command(True), 'true')
 
 
 # test_news
