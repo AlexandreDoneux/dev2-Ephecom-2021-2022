@@ -2,7 +2,8 @@
 # UTF-8
 
 # help est une commande permettant d'avoir des informations sur l'ensemble des commandes.
-# En indiquant spécifiquement une commande (ex: '/help get_date') on aura des informations sur ccette commande en particulier.
+# En indiquant spécifiquement une commande (ex: '/help get_date') on aura des informations
+# sur ccette commande en particulier.
 # -> Ce qu'elle fait, comment l'utiliser, arguments, ...
 
 class Help:
@@ -11,10 +12,9 @@ class Help:
         """
         :param: command: str - commande sur laquelle on veut l'aide. Si aucune n'est précisée on affiche l'aide de
                                toutes les commandes
-        :return: none
         """
         self.command = command
-        self.help_text =""
+        self.help_text = ""
 
         self.help_weather = "Aide weather \n"
         self.help_news = "Aide news \n"
@@ -44,17 +44,14 @@ class Help:
                                         "restaurant": self.help_restaurant, "info": self.help_info,
                                         "time": self.help_time, "date": self.help_date}
 
-
     def __str__(self):
         """
         Fonction qui affiche l'aide de la commande demandée, ou celles de toutes les commandes si aucune n'est demandée.
-        :param: none
-        :return: none
         :raises: ValueError
                     - la commande demandée n'existe pas
         """
         try:
-            if self.command == "all" :
+            if self.command == "all":
                 command_keys = self.command_help_correspond.keys()
                 for i in command_keys:
                     if i in ["linkedin", "youtube", "wikipedia"]:
@@ -64,17 +61,18 @@ class Help:
 
             else:
                 if self.command in ["linkedin", "youtube", "wikipedia"]:
-                            print(self.command_help_correspond[self.command].format(site=self.command))
+                    print(self.command_help_correspond[self.command].format(site=self.command))
 
                 else:
                     self.help_text += self.command_help_correspond[self.command]
 
-            return(self.help_text)
+            return self.help_text
 
         except:
-            return("Commande non trouvée")
+            return "Commande non trouvée"
 
         # Mieux faire l'exception !!!!!
+
 
 if __name__ == "__main__":
 
@@ -82,5 +80,5 @@ if __name__ == "__main__":
     print(my_help)
     print(str(my_help))
 
-    #my_second_help = Help()
-    #print(my_second_help)
+    # my_second_help = Help()
+    # print(my_second_help)

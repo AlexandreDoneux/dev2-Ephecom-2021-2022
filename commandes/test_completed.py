@@ -116,6 +116,7 @@ class News_test(unittest.TestCase):
         self.assertTrue(News("be", 2), News("be", 2).code in str)
         self.assertTrue(News("fr", 12), News("fr",12).number in int)
 
+# manque test_help et test_api_end_point
 
 
 if __name__ == '__main__':
