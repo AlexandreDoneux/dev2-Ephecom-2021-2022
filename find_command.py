@@ -54,4 +54,6 @@ def find_command(argument):
             get_weather.Weather(argument[1]).show_weather()
 
     elif argument[0] == '/news':
-        pass
+        show_news = get_news.News()
+        show_news.news_Of_To_Day()
+        
