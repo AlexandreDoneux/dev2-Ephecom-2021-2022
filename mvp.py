@@ -7,7 +7,7 @@ def call_help():
     print("Voici les commandes existantes:")
     print("La commande meteo:\n"
           + "Description: Permet d'avoir des informations sur la météo d'une certaine ville\n"
-          + "Utilisation: \meteo nomDeLaVille\n")
+          + "Utilisation: \\meteo nomDeLaVille\n")
 
 
 def call_weather(request):

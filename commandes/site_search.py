@@ -5,16 +5,18 @@
 
 import webbrowser
 
-dict_char_to_url_code={"'": "%27", '"': "%22",  "[": "%5B", "]": "%5D", "{": "%7B", "}": "%7D", "+": "%2B", "<": "%3C", ">": "%3E", "&": "%26"}
+dict_char_to_url_code = {"'": "%27", '"': "%22",  "[": "%5B", "]": "%5D", "{": "%7B", "}": "%7D", "+": "%2B",
+                         "<": "%3C", ">": "%3E", "&": "%26"}
 
-class Research():
+
+class Research:
     def __init__(self, arguments):
         """
         :param: arguments : list - liste contenant l'ensemble des mots de la recherche
         :return: none
         """
         self.site = ""
-        #self.url = ""
+        # self.url = ""
         self.arguments = arguments
 
 # Pas vraiment besoin de getter et setter, vu qu'on y accède que depuis l'interieur de la classe
@@ -37,9 +39,9 @@ class Research():
         """
         if self.url == "":
             print("L'URL est vide")
-            return(-1)
+            return -1
         try:
-            webbrowser.open(self.url) # besoin d'un controle d'erreur
+            webbrowser.open(self.url)  # besoin d'un controle d'erreur
         except:
             print("Problème de connexion. Nous ne pouvons pas joindre l'url")
 
@@ -48,6 +50,7 @@ class Research():
         # pas s'en rendre compte
 
 # ----------------------------------
+
 
 class Linkedin(Research):
     def __init__(self, arguments):
@@ -67,18 +70,20 @@ class Linkedin(Research):
         :return: none
         """
 
-        # Recherche "Charles Doneux" -> https://fr.linkedin.com/pub/dir?firstName=Charles&lastName=Doneux&trk=public_profile_people-search-bar_search-submit
+        # Recherche "Charles Doneux" -> https://fr.linkedin.com/pub/dir?firstName
+        # =Charles&lastName=Doneux&trk=public_profile_people-search-bar_search-submit
         if len(self.arguments) != 2:
             print("Utilisez 2 arguments pour la recherche Linkedin : nom et prénom.")
-            return(-1)
+            return -1
 
-        self.url = ("https://fr.linkedin.com/pub/dir?firstName="+'+'.join((self.arguments[0]).split())+"+&lastName="+
+        self.url = ("https://fr.linkedin.com/pub/dir?firstName="+'+'.join((self.arguments[0]).split())+"+&lastName=" +
                     "+".join((self.arguments[1]).split())+"&trk=public_profile_people-search-bar_search-submit")
 
     # problème Linkedin : Il faut s'inscrire
     # problème d'accents dans les url
 
     # besoin de créer une méthode à part ? Pourquoi ne pas le faire dans le __init__ ?
+
 
 class Wikipedia(Research):
     def __init__(self, arguments):
@@ -98,13 +103,15 @@ class Wikipedia(Research):
         :return: none
         """
 
-        # Recherche "repertoire courant" -> https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search=repertoire+courant&go=Go&ns0=1
+        # Recherche "repertoire courant" -> https://fr.wikipedia.org/w/index.php?title=
+        # Spécial:Recherche&search=repertoire+courant&go=Go&ns0=1
         self.url = "https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search="
         for i in self.arguments:
             self.url += i
             if self.arguments.index(i) != len(self.arguments)-1:  # Ajoute un "+" après chaque terme sauf le dernier
                 self.url += "+"
         self.url += "&go=Go&ns0=1"
+
 
 class Youtube(Research):
     def __init__(self, arguments):
@@ -128,19 +135,18 @@ class Youtube(Research):
         self.url = "https://www.youtube.com/results?search_query="
         for i in self.arguments:
             self.url += i
-            if self.arguments.index(i) != len(self.arguments)-1 :  # Ajoute un "+" après chaque terme sauf le dernier
+            if self.arguments.index(i) != len(self.arguments)-1:  # Ajoute un "+" après chaque terme sauf le dernier
                 self.url += "+"
 
-         # Remplacement ne marche pas
+        # Remplacement ne marche pas
         for i in dict_char_to_url_code.keys():
             self.url.replace(i, dict_char_to_url_code[i])
-
 
 
 # Dois-je mettre l'initialisation de toutes les variables dans le init des classes enfant ?
 # Ou est-ce que c'est déjà fait grâce à la classe parent ? -> apparement non
 
-if __name__ == "__main__" :
+if __name__ == "__main__":
     """
     ma_recherche = Wikipedia("mémoire", "partagée")
 
@@ -167,4 +173,3 @@ if __name__ == "__main__" :
     ma_recherche2.go_to_site()
     """
 # idées d'autres sites
-

@@ -35,7 +35,7 @@ class News:
         if self.number < 1:
             raise Exception("Le nombre doit être superieur à 1")
 
-    def color(self):
+    def news_of_to_day(self):
         """
 
         :return:
@@ -88,8 +88,8 @@ class News:
                             print(Color.BOLD, "Le sujet de l'article: ", Color.END, subject)
                             print(Color.BOLD, "Petit resumer du contenu: ", Color.END, description)
                             print(Color.BOLD, "Fait un clic sur le lien pour avoir toute l'article: ", Color.END, link)
-                            print(Color.END, "Publié: ", Color.END, my_date.strftime("%A"),my_date.day,
-                                  my_date.strftime("%B"),my_date.year, 'at', my_date.strftime("%H") +
+                            print(Color.END, "Publié: ", Color.END, my_date.strftime("%A"), my_date.day,
+                                  my_date.strftime("%B"), my_date.year, 'at', my_date.strftime("%H") +
                                   ":" + my_date.strftime("%M"), "minutes")
                             print("\n")
                     else:
@@ -102,4 +102,4 @@ class News:
 
 if __name__ == '__main__':
     n1 = News()
-    n1.color()
+    n1.news_of_to_day()
