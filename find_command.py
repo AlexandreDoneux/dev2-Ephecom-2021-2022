@@ -2,7 +2,9 @@
 # UTF-8
 
 from commandes import api_end_point, get_clean_command, get_date, get_news, get_time, help, show_info, site_search
+from commandes import get_weather
 # Compléter import
+
 
 def find_command(argument):
 
@@ -30,7 +32,7 @@ def find_command(argument):
         else:
             print("ERREUR sur les paramètres")
 
-    elif argument[0] =='/itiner':
+    elif argument[0] == '/itiner':
         api_end_point.Itinerary().show_itinerary()
 
     elif argument[0] == '/youtube':
@@ -45,6 +47,11 @@ def find_command(argument):
         my_research = site_search.Linkedin(argument[1:])
         my_research.create_url_linkedin()
         my_research.go_to_site()
+    elif argument[0] == '/meteo':
+        if len(argument) == 1:
+            print("ERREUR pas de ville spécifiée")
+        else:
+            get_weather.Weather(argument[1]).show_weather()
 
     elif argument[0] == '/news':
-         pass
+        pass
