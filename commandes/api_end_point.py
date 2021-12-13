@@ -37,10 +37,13 @@ class Itinerary(Commande):
             # print(response_json["routes"])
             lien = "https://www.google.be/maps/dir/" + origin + "+/" + destination
             # print(complete_url)
+            find = True
             for status in response_json["geocoded_waypoints"]:
-                status_return = status['geocoder_status']
-                stat = status_return
-            if stat == "OK":
+                if status['geocoder_status'] != "OK":
+                    find = False
+                """status_return = status['geocoder_status']
+                stat = status_return"""
+            if find:
                 for i in response_json["routes"]:
                     y = i['legs']
                     # print(y)
