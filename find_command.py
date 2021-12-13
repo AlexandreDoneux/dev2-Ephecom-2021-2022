@@ -55,7 +55,7 @@ def find_command(argument):
 
     elif argument[0] == '/news':
         show_news = get_news.News()
-        show_news.news_Of_To_Day()
+        show_news.news_of_to_Day()
 
     elif argument[0] == "/help":
         if len(argument) == 1:
