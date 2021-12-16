@@ -11,7 +11,7 @@ class Weather:
 
     def show_weather(self):
         """
-        Fonction qui renvoie la meteo d'une ville avec plusieures autres informations
+        Fonction qui affiche la meteo d'une ville ainsi que l'humidité en pourcent
         """
         # clé de l'API
         api_key = "923ec08eb99f30d7672f5bc5aa6d2172"
@@ -30,15 +30,11 @@ class Weather:
             current_temperature = (y["temp"] - 273.15).__round__(1)
             # stocke l'humidité
             current_humidity = y["humidity"]
-            # description du temps
-            # weather_description = x["weather"][0]["description"]
             # affichage
-            print("Voici les différentes informations pour la météo à " + city_name)
-            print("Temperature (en °C): " +
+            print("Voici les différentes informations pour la météo à " + city_name + ":")
+            print(" - Temperature (en °C): " +
                   str(current_temperature) + " °C" +
-                  "\nHumidité de l'air: " +
+                  "\n - Humidité de l'air: " +
                   str(current_humidity) + "%")
-            # "\Description = " +
-            # str(weather_description))
         else:
             print("La ville n'existe pas")

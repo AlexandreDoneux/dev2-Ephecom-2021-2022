@@ -23,8 +23,3 @@ class ShowInfo:
             self.__sentence_description + "\n\n" + \
             self.__sentence__context + "\n--------------------------------------------------------------\n" \
             + "Créé par " + self.__sentence_collaborator
-
-
-"""help_info = "Aide de la commande info\nDescription: commande permettant d'afficher des informations sur le module" \
-            " de chatbot multimédia\nUtilisation: /info\n"
-print(help_info)"""

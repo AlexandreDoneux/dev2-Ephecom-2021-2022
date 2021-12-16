@@ -60,16 +60,3 @@ class Date:
         else:
             self.__date_completed = f"We are {self.__day_name} the {self.__day_number}th" \
                                     f" of {self.__month_name} {self.__year_number}"
-
-
-"""Examples
-date1 = Date()
-print(date1)
-date2 = Date(False)
-print(date2)
-"""
-
-"""help_date = "Aide de la commande date\nDescription: commande permettant d'afficher la date au format anglais" \
-            " ou français (par défaut, l'affichage est en français)\n" \
-            "Utilisation: /date [eng ou fr]\n[]: paramètre optionnel\n"
-print(help_date)"""

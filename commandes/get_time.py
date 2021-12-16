@@ -39,11 +39,3 @@ class Time:
                 self.__time_completed = f"It's {hours}:{time.strftime('%M')} PM"
             else:
                 self.__time_completed = f"It's {hours}:{time.strftime('%M')} AM"
-
-
-""" Examples
-time1 = Time()
-print(time1)
-time2 = Time(False)
-print(time2)
-"""
