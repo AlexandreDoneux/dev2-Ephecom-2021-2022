@@ -62,18 +62,28 @@ class News:
                              "cz": "Tchéquie",
                              "de": "Allemagne",
                              "fr": "France",
-                             "us": "USA", }
+                             "us": "USA",
+                             "gb": "Grande Bretagne",
+                             "pt": "Portugal"}
 
-        self.code = input("Introduisez le code pays du quel vous voulez voir l'article: ")
+        countries = [i + " : " + code_of_countries[i] + "\n" for i in code_of_countries.keys()]
+        print("Voici les codes disponibles:\n" + "".join(countries))
+        self.code = input("Introduisez le code pays du quel vous voulez voir l'article  :\n")
         while self.code not in code_of_countries:
-            self.code = input("Veuillez entrer un code pays valide !: ")
-        self.number = input("Combien d'articles voulez-vous? :  ")
+            self.code = input("Veuillez entrer un code pays valide [ae, ar, at, au, be, bg, br, ca, ch, cn, co, cu,"
+                              " cz, de, fr, us]!: ")
+        state = True
+        while state:
+            self.number = input("Combien d'articles voulez-vous (max 5) ? :  ")
+            if self.number.isdigit() and 0 < int(self.number) <= 5:
+                state = False
+            else:
+                print("ERREUR votre valeur n'est pas valide !")
 
         api_key = "bb2385450c984f4bacd087cf8df470c3"
         url = "https://newsapi.org/v2/top-headlines?country=" + self.code + "&category=business&apiKey=" + api_key
         news = requests.get(url).json()
         article = news['articles']
-        print(url)
         try:
             if self.code in code_of_countries:
                 if len(article):
