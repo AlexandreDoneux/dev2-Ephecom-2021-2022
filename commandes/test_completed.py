@@ -12,6 +12,7 @@ from show_info import ShowInfo
 from get_news import News
 from get_news import Color
 from help import Help
+from site_search import Youtube, Linkedin, Wikipedia
 
 
 # test_unit_kevin
@@ -168,6 +169,140 @@ class HelpTest(unittest.TestCase):
         Dans ce cas, à la création de l'objet une eexception NoSuchCommand doit être raise.
         """
         self.assertRaises(Exception, Help(), "testing")
+
+
+
+class YoutubeTest(unittest.TestCase):
+    def test_youtube_url_one_arg(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string
+        """
+        my_youtube = Youtube(["salut"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=salut")
+
+    def test_youtube_url_one_arg_apostrophe(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant une apostrophe
+        """
+        my_youtube = Youtube(["l'avancement"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=l%27avancement")
+
+    def test_youtube_url_one_arg_apostrophe_2(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant deux apostrophes
+        """
+        my_youtube = Youtube(["c'es't"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=c%27es%27t")
+
+    def test_youtube_url_one_arg_space(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un espace
+        """
+        my_youtube = Youtube(["bonjour monsieur"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=bonjour+monsieur")
+
+    def test_youtube_url_one_arg_space_2(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant deux espaces
+        """
+        my_youtube = Youtube(["alex est cool"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=alex+est+cool")
+
+    def test_youtube_url_one_arg_plus(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string contenant un plus
+        """
+        my_youtube = Youtube(["a+b"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=a%2Bb")
+
+    def test_youtube_url_one_arg_equal(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string contenant un symbole égal
+        """
+        my_youtube = Youtube(["a=b"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=a%3Db")
+
+    def test_youtube_url_two_args(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec deux valeurs string
+        """
+        my_youtube = Youtube(["bonjour", "monsieur"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=bonjour+monsieur")
+
+    def test_youtube_url_two_args_space(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec deux valeurs string dont une avec un espace
+        """
+        my_youtube = Youtube(["bonjour monsieur", "Obama"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=bonjour+monsieur+Obama")
+
+    def test_youtube_url_two_args_plus(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec deux valeurs string dont une avec un symbole
+        plus.
+        """
+        my_youtube = Youtube(["salut", "a+b"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=salut+a%2Bb")
+
+    def test_youtube_url_one_arg_bracket_type1(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un { et un }
+        """
+        my_youtube = Youtube(["alex{tom}"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=alex%7Btom%7D")
+
+
+    def test_youtube_url_one_arg_bracket_type2(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un [ et un ]
+        """
+        my_youtube = Youtube(["alex[tom]"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=alex%5Btom%5D")
+
+    def test_youtube_url_one_arg_star(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un *
+        """
+        my_youtube = Youtube(["étoile*"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=étoile%2A")
+
+    def test_youtube_url_one_arg_hashtag(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un #
+        """
+        my_youtube = Youtube(["hash#tag"])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=hash%23tag")
+
+    def test_youtube_url_no_arg(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments vide
+        """
+        my_youtube = Youtube([])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com")
+
+    def test_youtube_url_one_arg_empty_string(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string vide. create_url interprète ça comme
+        une liste vide
+        """
+        my_youtube = Youtube([""])
+        my_youtube.create_url_youtube()
+        self.assertEqual(my_youtube.url, "https://www.youtube.com")
 
 
 if __name__ == '__main__':

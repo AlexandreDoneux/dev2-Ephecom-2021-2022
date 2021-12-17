@@ -43,6 +43,7 @@ def find_command(argument):
     # besoin connection internet
     elif argument[0] == '/youtube':
         if check_connection():
+            print(argument[1:])
             my_research = site_search.Youtube(argument[1:])
             my_research.create_url_youtube()
             my_research.go_to_site()
