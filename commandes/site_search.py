@@ -38,7 +38,6 @@ class Research:
                     - si l'url est vide
         """
         if self.url == "":
-            print("L'URL est vide")
             return -1
         try:
             webbrowser.open(self.url)  # besoin d'un controle d'erreur
@@ -65,19 +64,22 @@ class Linkedin(Research):
     def create_url_linkedin(self):
         """
         Crée l'url de recherche spécifique à Linkedin en fonction des *arguments. Mets cette url dans l'attribut
-        self.url de la classe
+        self.url de la classe.  Si arguments est une liste vide renvoie vers la page d'acceuil de Linkedin.
         :param: none
         :return: none
         """
 
         # Recherche "Charles Doneux" -> https://fr.linkedin.com/pub/dir?firstName
         # =Charles&lastName=Doneux&trk=public_profile_people-search-bar_search-submit
-        if len(self.arguments) != 2:
+        if self.arguments == []:
+            self.url = "https://fr.linkedin.com"
+        elif len(self.arguments) != 2:
             print("Utilisez 2 arguments pour la recherche Linkedin : nom et prénom.")
             return -1
-
-        self.url = ("https://fr.linkedin.com/pub/dir?firstName="+'+'.join((self.arguments[0]).split())+"+&lastName=" +
-                    "+".join((self.arguments[1]).split())+"&trk=public_profile_people-search-bar_search-submit")
+        else:
+            self.url = ("https://fr.linkedin.com/pub/dir?firstName="+'+'.join((self.arguments[0]).split())+
+                        "+&lastName=" + "+".join((self.arguments[1]).split())
+                        + "&trk=public_profile_people-search-bar_search-submit")
 
     # problème Linkedin : Il faut s'inscrire
     # problème d'accents dans les url
@@ -98,19 +100,27 @@ class Wikipedia(Research):
     def create_url_wikipedia(self):
         """
         Crée l'url de recherche spécifique à Wikipedia en fonction des *arguments. Mets cette url dans l'attribut
-        self.url de la classe
+        self.url de la classe. Si arguments est une liste vide renvoie vers la page d'acceuil de Wikipedia.
         :param: none
         :return: none
         """
+        # self.url = "https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search="
 
-        # Recherche "repertoire courant" -> https://fr.wikipedia.org/w/index.php?title=
-        # Spécial:Recherche&search=repertoire+courant&go=Go&ns0=1
-        self.url = "https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search="
-        for i in self.arguments:
-            self.url += i
-            if self.arguments.index(i) != len(self.arguments)-1:  # Ajoute un "+" après chaque terme sauf le dernier
-                self.url += "+"
-        self.url += "&go=Go&ns0=1"
+        # Meilleur type d'url : https://fr.wikipedia.org/w/index.php?search=test+unitaire&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1
+        # -> ne redirige pas si l'article existe. On voit tous les résultats similaires.
+
+        if self.arguments == []:
+            self.url = "https://www.wikipedia.org"
+
+        else:
+            # self.url = "https://fr.wikipedia.org/w/index.php?title=Spécial:Recherche&search="
+            self.url = "https://fr.wikipedia.org/w/index.php?search="
+            for i in self.arguments:
+                self.url += i
+                if self.arguments.index(i) != len(self.arguments)-1:  # Ajoute un "+" après chaque terme sauf le dernier
+                    self.url += "+"
+            # self.url += "&go=Go&ns0=1"
+            self.url += "&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1"
 
 
 class Youtube(Research):
@@ -126,21 +136,25 @@ class Youtube(Research):
     def create_url_youtube(self):
         """
         Crée l'url de recherche spécifique à Youtube en fonction des *arguments. Mets cette url dans l'attribut
-        self.url de la classe
+        self.url de la classe. Si arguments est une liste vide renvoie vers la page d'acceuil de Youtube.
         :param: none
         :return: none
         """
 
-        # Recherche "thomas va bien" -> https://www.youtube.com/results?search_query=thomas+va+bien
-        self.url = "https://www.youtube.com/results?search_query="
-        for i in self.arguments:
-            self.url += i
-            if self.arguments.index(i) != len(self.arguments)-1:  # Ajoute un "+" après chaque terme sauf le dernier
-                self.url += "+"
+        if self.arguments == []:
+            self.url = "https://www.youtube.com"
 
-        # Remplacement ne marche pas
-        for i in dict_char_to_url_code.keys():
-            self.url.replace(i, dict_char_to_url_code[i])
+        else:
+            # Recherche "thomas va bien" -> https://www.youtube.com/results?search_query=thomas+va+bien
+            self.url = "https://www.youtube.com/results?search_query="
+            for i in self.arguments:
+                self.url += i
+                if self.arguments.index(i) != len(self.arguments)-1:  # Ajoute un "+" après chaque terme sauf le dernier
+                    self.url += "+"
+
+            # Remplacement ne marche pas
+            for i in dict_char_to_url_code.keys():
+                self.url.replace(i, dict_char_to_url_code[i])
 
 
 # Dois-je mettre l'initialisation de toutes les variables dans le init des classes enfant ?
