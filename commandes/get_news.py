@@ -118,5 +118,4 @@ class News:
 
 
 if __name__ == '__main__':
-    n1 = News()
-    n1.news_of_to_day()
+    pass

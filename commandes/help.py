@@ -22,22 +22,22 @@ class Help:
         self.help_text = ""
 
         self.help_weather = "/meteo {ville} \nCommande affichant les informations météorologiques de la ville " \
-                            "spécifiée. Elle affiche la temperature et l'humidité de l'air."
+                            "spécifiée. Elle affiche la temperature et l'humidité de l'air.\n"
 
         self.help_news = "/news\nPermets à l'utilisateur une recherche sur les articles " \
                          "du jour selon le pays disponible où il veut \nLes pays disponibles sont : " \
                          "[ae: Émirats arabes unis, ar: Argentine, at: Autriche, au: Australie, be: Belgique, " \
                          "bg: Bulgarie, br: Brésil, ca: Canada, ch: Suisse, cn: Chine, co: Colombia, cu: Cuba, " \
-                         "cz: Tchéquie, de: Allemagne, fr: France, us: USA, gb: Grande Bretagne, pt: Portugal]"
+                         "cz: Tchéquie, de: Allemagne, fr: France, us: USA, gb: Grande Bretagne, pt: Portugal]\n"
 
         self.help_itiner = "/itiner\nPermet de trouver son trajet en faisant l'estimation du temps et de la " \
                            "distance \nL'utilisateur est invité à insérer son adresse de départ ainsi que " \
-                           "son adresse de destination."
+                           "son adresse de destination.\n"
 
         self.help_research = "/{site} [*research]      []: paramètre optionnel\nCommande permettant l'ouverture et " \
                              "une recherche sur {site}. research est la recherche, la phrase que vous voulez " \
                              "rechercher. \nSans paramètres de recherche spécifique {site} est ouvert à sa page " \
-                             "d'acceuil."
+                             "d'acceuil.\n"
 
         self.help_info = "/info\nCommande permettant d'afficher des informations sur le module de chatbot multimédia.\n"
 
@@ -46,7 +46,7 @@ class Help:
 
         self.help_help = "/help [command]      []: paramètre optionnel\n Commande permettant d'afficher les aides des" \
                          " différentes commandes. 'command' représente la commande pour laquelle vous voulez de " \
-                         "l'aide. Sans commande spécifié /help renvoie les aides concernant toutes les commandes."
+                         "l'aide. Sans commande spécifié /help renvoie les aides concernant toutes les commandes.\n"
 
         self.help_date = "/date [eng/fr]      []: paramètre optionnel\n Commande permettant d'afficher la date au" \
                          " format anglais ou français (par défaut, l'affichage est en français)\n"
