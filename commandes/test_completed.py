@@ -122,8 +122,6 @@ class NewsTest(unittest.TestCase):
         self.assertTrue(News("be", 2), News("be", 2).code in str)
         self.assertTrue(News("fr", 12), News("fr", 12).number in int)
 
-# manque test_help et test_api_end_point
-
 
 class HelpTest(unittest.TestCase):
 
@@ -465,7 +463,47 @@ class WikipediaTest(unittest.TestCase):
 
 
 class PercentEncodingUrlTest(unittest.TestCase):
-    pass
+    def test_percent_encoding_all(self):
+        """
+        test la conversion de caractères spéciaux pour url. On test ici tous les types à la fois
+        """
+        self.assertEqual(percent_encoding_url("[]{}*#@:=+/?<>$&%!,;()"),
+                         "%5B%5D%7B%7D%2A%23%40%3A%3D%2B%2F%3F%3C%3E%24%26%25%21%2C%3B%28%29")
+        # possible de faire une vérification sur " et ' ?
+
+    def test_percent_encoding_empty(self):
+        """
+        test la conversion de caractères spéciaux pour url vide.
+        """
+        self.assertEqual(percent_encoding_url(""), "")
+
+    def test_percent_encoding_nothing(self):
+        """
+        test la conversion de caractères spéciaux pour url vide.
+        """
+        self.assertEqual(percent_encoding_url(), "")
+
+    def test_percent_encoding_int(self):
+        """
+        test la conversion de caractères spéciaux pour url qui est un nombre entier.
+        La fonction testée doit renvoyer False.
+        """
+        self.assertEqual(percent_encoding_url(67), False)
+
+    def test_percent_encoding_float(self):
+        """
+        test la conversion de caractères spéciaux pour url qui est un nombre décimal.
+        La fonction testée doit renvoyer False.
+        """
+        self.assertEqual(percent_encoding_url(6.666), False)
+
+    def test_percent_encoding_object(self):
+        """
+        test la conversion de caractères spéciaux pour url qi est un objet.
+        La fonction testée doit renvoyer False.
+        """
+        my_object = Wikipedia(["alex"])
+        self.assertEqual(percent_encoding_url(my_object), False)
 
 
 class NoBlankStringTest(unittest.TestCase):

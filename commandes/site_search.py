@@ -6,7 +6,13 @@
 import webbrowser
 
 
-def percent_encoding_url(url):
+def percent_encoding_url(url=""):
+    """
+    Fonction modifiant certains paramètres spéciaux dans un string pour permettre à ce string d'être utlisée comme url.
+    :param - url: string
+    :return - result_url: la nouvelle string où les caractères spéciaux ont étés changés.
+            - False: lorsque le paramètre url de la fonction n'est pas un string.
+    """
     dict_char_to_url_code = {"[": "%5B", "]": "%5D", "{": "%7B", "}": "%7D", "+": "%2B", "<": "%3C", ">": "%3E",
                              "&": "%26", ":": "%3A", "/": "%2F", "?": "%3F", "#": "%23", "@": "%40", "$": "%24",
                              ",": "%2C", ";": "%3B", "%": "%25", '"': "%22", "'": "%27", "!": "%21", "(": "%28",
@@ -14,14 +20,15 @@ def percent_encoding_url(url):
     # pour youtube, pas besoin de modifier : ",',!,(,),* -> les remplacer quand même ?
     # OUI, on en a besoin pour wikipedia
     result_url = ""
-    if type(url == str):
+
+    if type(url) == str:
         for caract in url:
             if caract in dict_char_to_url_code.keys():
                 result_url += dict_char_to_url_code[caract]
             else:
                 result_url += caract
     else:
-        return -1
+        return False
 
     return result_url
 

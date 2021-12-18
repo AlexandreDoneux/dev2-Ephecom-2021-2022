@@ -22,6 +22,7 @@ def find_command(argument):
             print(get_date.Date(True))
         else:
             print("ERREUR sur les paramètres")
+            # détection d'erreur un peu simple. Détection de mauvaise langue? Trop de paramètres?
 
     elif argument[0] == '/time':
         if len(argument) == 1:
@@ -32,6 +33,7 @@ def find_command(argument):
             print(get_time.Time(True))
         else:
             print("ERREUR sur les paramètres")
+            # détection d'erreur un peu simple. Détection de mauvaise langue? Trop de paramètres?
 
     # besoin connection internet
     elif argument[0] == '/itiner':
