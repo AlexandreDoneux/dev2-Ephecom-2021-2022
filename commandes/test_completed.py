@@ -171,7 +171,6 @@ class HelpTest(unittest.TestCase):
         self.assertRaises(Exception, Help(), "testing")
 
 
-
 class YoutubeTest(unittest.TestCase):
     def test_youtube_url_one_arg(self):
         """
@@ -305,5 +304,139 @@ class YoutubeTest(unittest.TestCase):
         self.assertEqual(my_youtube.url, "https://www.youtube.com")
 
 
+class WikipediaTest(unittest.TestCase):
+    def test_wikipedia_url_one_arg(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string
+        """
+        my_wiki = Wikipedia(["salut"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=salut&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_apostrophe(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant une apostrophe
+        """
+        my_wiki = Wikipedia(["l'avancement"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=l%27avancement&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_apostrophe_2(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant deux apostrophes
+        """
+        my_wiki = Wikipedia(["c'es't"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=c%27es%27t&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_space(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un espace
+        """
+        my_wiki = Wikipedia(["bonjour monsieur"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_space_2(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant deux espaces
+        """
+        my_wiki = Wikipedia(["alex est cool"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=alex+est+cool&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_plus(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string contenant un plus
+        """
+        my_wiki = Wikipedia(["a+b"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=a%2Bb&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_youtube_url_one_arg_equal(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string contenant un symbole égal
+        """
+        my_wiki = Wikipedia(["a=b"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=a%3Db&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_two_args(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec deux valeurs string
+        """
+        my_wiki = Wikipedia(["bonjour", "monsieur"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_two_args_space(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec deux valeurs string dont une avec un espace
+        """
+        my_wiki = Wikipedia(["bonjour monsieur", "Obama"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur+Obama&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_two_args_plus(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec deux valeurs string dont une avec un symbole
+        plus.
+        """
+        my_wiki = Wikipedia(["salut", "a+b"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=salut+a%2Bb&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_bracket_type1(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un { et un }
+        """
+        my_wiki = Wikipedia(["alex{tom}"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=alex%7Btom%7D&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+
+    def test_wikipedia_url_one_arg_bracket_type2(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un [ et un ]
+        """
+        my_wiki = Wikipedia(["alex[tom]"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=alex%5Btom%5D&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_star(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un *
+        """
+        my_wiki = Wikipedia(["étoile*"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=étoile%2A&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_one_arg_hashtag(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un #
+        """
+        my_wiki = Wikipedia(["hash#tag"])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=hash%23tag&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+
+    def test_wikipedia_url_no_arg(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments vide
+        """
+        my_wiki = Wikipedia([])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://www.wikipedia.org")
+
+    def test_wikipedia_url_one_arg_empty_string(self):
+        """
+        teste l'url générée lorsqu'on utilise une liste arguments avec un string vide. create_url interprète ça comme
+        une liste vide
+        """
+        my_wiki = Wikipedia([""])
+        my_wiki.create_url_wikipedia()
+        self.assertEqual(my_wiki.url, "https://www.wikipedia.org")
+
+
 if __name__ == '__main__':
     pass
+
