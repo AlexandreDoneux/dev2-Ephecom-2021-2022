@@ -22,6 +22,7 @@ def find_command(argument):
             print(get_date.Date(True))
         else:
             print("ERREUR sur les paramètres")
+            # détection d'erreur un peu simple. Détection de mauvaise langue? Trop de paramètres?
 
     elif argument[0] == '/time':
         if len(argument) == 1:
@@ -32,6 +33,7 @@ def find_command(argument):
             print(get_time.Time(True))
         else:
             print("ERREUR sur les paramètres")
+            # détection d'erreur un peu simple. Détection de mauvaise langue? Trop de paramètres?
 
     # besoin connection internet
     elif argument[0] == '/itiner':
@@ -43,6 +45,7 @@ def find_command(argument):
     # besoin connection internet
     elif argument[0] == '/youtube':
         if check_connection():
+            print(argument[1:])
             my_research = site_search.Youtube(argument[1:])
             my_research.create_url_youtube()
             my_research.go_to_site()
@@ -72,7 +75,6 @@ def find_command(argument):
                 print("ERREUR pas de ville spécifiée")
             else:
                 argument[1] = " ".join(argument[1:])
-                print(argument[1])
                 get_weather.Weather(argument[1]).show_weather()
         else:
             print("Pas de connexion internet.")

@@ -16,3 +16,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     find_command.find_command(args.chatbot)
+
+    # attention: argparse supprime automatiquement des guillemets dans un paramètre

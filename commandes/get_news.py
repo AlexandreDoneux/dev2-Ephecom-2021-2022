@@ -70,8 +70,8 @@ class News:
         print("Voici les codes disponibles:\n" + "".join(countries))
         self.code = input("Introduisez le code pays du quel vous voulez voir l'article  :\n")
         while self.code not in code_of_countries:
-            self.code = input("Veuillez entrer un code pays valide [ae, ar, at, au, be, bg, br, ca, ch, cn, co, cu,"
-                              " cz, de, fr, us]!: ")
+            self.code = input("Veuillez entrer un code pays valide "
+                              + str([i for i in code_of_countries.keys()]) + ": \n")
         state = True
         while state:
             self.number = input("Combien d'articles voulez-vous (max 5) ? :  ")
@@ -103,14 +103,14 @@ class News:
                             print(Color.BOLD, "L'article a été publié par la chaine: ", Color.END, Color.BLUE, channel,
                                   Color.END)
                             print(Color.BOLD, "Le sujet de l'article: ", Color.END, subject)
-                            print(Color.BOLD, "Petit resumer du contenu: ", Color.END, description)
-                            print(Color.BOLD, "Fait un clic sur le lien pour avoir toute l'article: ", Color.END, link)
-                            print(Color.END, "Publié: ", Color.END, my_date.strftime("%A"), my_date.day,
+                            print(Color.BOLD, "Petit resumé du contenu: ", Color.END, description)
+                            print(Color.BOLD, "Lien de l'article: ", Color.END, link)
+                            print(Color.END, "Date de publication: ", Color.END, my_date.strftime("%A"), my_date.day,
                                   my_date.strftime("%B"), my_date.year, 'at', my_date.strftime("%H") +
                                   ":" + my_date.strftime("%M"), "minutes")
                             print("\n")
                     else:
-                        print("le nombre d'article est introuvable, \n Essayez avec un nombre inferieur !")
+                        print("le nombre d'articles est introuvable, \n Essayez avec un nombre inferieur !")
             else:
                 print("L'indentification ne se trouve pas dans la list")
         except:
@@ -118,5 +118,4 @@ class News:
 
 
 if __name__ == '__main__':
-    n1 = News()
-    n1.news_of_to_day()
+    pass
