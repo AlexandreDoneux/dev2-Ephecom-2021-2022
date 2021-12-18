@@ -12,7 +12,7 @@ from show_info import ShowInfo
 from get_news import News
 from get_news import Color
 from help import Help
-from site_search import Youtube, Linkedin, Wikipedia
+from site_search import Youtube, Linkedin, Wikipedia, no_blank_string_in_list, percent_encoding_url
 
 
 # test_unit_kevin
@@ -80,6 +80,7 @@ class GoodCommandTest(unittest.TestCase):
         """Vérification de good_command avec un nombre passé en paramètre"""
         self.assertEqual(give_good_command("/éèëêàâäçîïôöûüÿ"), "/"
                          "eeeeaaaciioouuy", "give_good_command('/éèëêàâäçîïôöûüÿ')")
+
     def test_boolean(self):
         """Vérification de good_command avec un nombre passé en paramètre"""
         self.assertEqual(give_good_command(True), 'true')
@@ -261,7 +262,6 @@ class YoutubeTest(unittest.TestCase):
         my_youtube.create_url_youtube()
         self.assertEqual(my_youtube.url, "https://www.youtube.com/results?search_query=alex%7Btom%7D")
 
-
     def test_youtube_url_one_arg_bracket_type2(self):
         """
         teste l'url générée lorsqu'on utilise une liste arguments avec un string comportant un [ et un ]
@@ -311,7 +311,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["salut"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=salut&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=salut&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_apostrophe(self):
         """
@@ -319,7 +321,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["l'avancement"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=l%27avancement&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=l%27avancement&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_apostrophe_2(self):
         """
@@ -327,7 +331,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["c'es't"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=c%27es%27t&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=c%27es%27t&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_space(self):
         """
@@ -335,7 +341,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["bonjour monsieur"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_space_2(self):
         """
@@ -343,7 +351,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["alex est cool"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=alex+est+cool&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=alex+est+cool&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_plus(self):
         """
@@ -351,7 +361,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["a+b"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=a%2Bb&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=a%2Bb&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_youtube_url_one_arg_equal(self):
         """
@@ -359,7 +371,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["a=b"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=a%3Db&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=a%3Db&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_two_args(self):
         """
@@ -367,7 +381,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["bonjour", "monsieur"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_two_args_space(self):
         """
@@ -375,7 +391,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["bonjour monsieur", "Obama"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur+Obama&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=bonjour+monsieur+Obama&title=Spécial:Recherche"
+                         "&profile=advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_two_args_plus(self):
         """
@@ -384,7 +402,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["salut", "a+b"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=salut+a%2Bb&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=salut+a%2Bb&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_bracket_type1(self):
         """
@@ -392,8 +412,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["alex{tom}"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=alex%7Btom%7D&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
-
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=alex%7Btom%7D&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_bracket_type2(self):
         """
@@ -401,7 +422,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["alex[tom]"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=alex%5Btom%5D&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=alex%5Btom%5D&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_star(self):
         """
@@ -409,7 +432,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["étoile*"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=étoile%2A&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=étoile%2A&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_one_arg_hashtag(self):
         """
@@ -417,7 +442,9 @@ class WikipediaTest(unittest.TestCase):
         """
         my_wiki = Wikipedia(["hash#tag"])
         my_wiki.create_url_wikipedia()
-        self.assertEqual(my_wiki.url, "https://fr.wikipedia.org/w/index.php?search=hash%23tag&title=Spécial:Recherche&profile=advanced&fulltext=1&ns0=1")
+        self.assertEqual(my_wiki.url,
+                         "https://fr.wikipedia.org/w/index.php?search=hash%23tag&title=Spécial:Recherche&profile="
+                         "advanced&fulltext=1&ns0=1")
 
     def test_wikipedia_url_no_arg(self):
         """
@@ -437,6 +464,13 @@ class WikipediaTest(unittest.TestCase):
         self.assertEqual(my_wiki.url, "https://www.wikipedia.org")
 
 
-if __name__ == '__main__':
+class PercentEncodingUrlTest(unittest.TestCase):
     pass
 
+
+class NoBlankStringTest(unittest.TestCase):
+    pass
+
+
+if __name__ == '__main__':
+    pass

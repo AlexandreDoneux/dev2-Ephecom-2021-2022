@@ -6,7 +6,6 @@
 import webbrowser
 
 
-
 def percent_encoding_url(url):
     dict_char_to_url_code = {"[": "%5B", "]": "%5D", "{": "%7B", "}": "%7D", "+": "%2B", "<": "%3C", ">": "%3E",
                              "&": "%26", ":": "%3A", "/": "%2F", "?": "%3F", "#": "%23", "@": "%40", "$": "%24",
@@ -62,7 +61,7 @@ class Research:
             recherche += i + " "
         recherche = recherche[:-1]   # on enlèvre l'espace en trop ajouté à la fin.
         recherche += "\'"
-        return("On fait la recherche : " + recherche + " sur le site " + self.site)
+        return "On fait la recherche : " + recherche + " sur le site " + self.site
 
     def go_to_site(self):
         """
@@ -112,7 +111,7 @@ class Linkedin(Research):
             print("Utilisez 2 arguments pour la recherche Linkedin : nom et prénom.")
             return -1
         else:
-            self.url = ("https://fr.linkedin.com/pub/dir?firstName="+'+'.join((self.arguments[0]).split())+
+            self.url = ("https://fr.linkedin.com/pub/dir?firstName=" + '+'.join((self.arguments[0]).split()) +
                         "+&lastName=" + "+".join((self.arguments[1]).split())
                         + "&trk=public_profile_people-search-bar_search-submit")
 
