@@ -3,9 +3,11 @@
 import os
 import platform
 import subprocess
+
 if __name__ == "__main__":
     script_path = os.path.dirname(os.path.abspath(__file__))
     script_path += "\\main.py"
+    print(script_path)
     running = True
     while running:
         attribut = input("Entrez une commande (q pour quitter) : ")
