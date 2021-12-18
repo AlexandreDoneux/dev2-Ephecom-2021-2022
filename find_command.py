@@ -73,7 +73,6 @@ def find_command(argument):
                 print("ERREUR pas de ville spécifiée")
             else:
                 argument[1] = " ".join(argument[1:])
-                print(argument[1])
                 get_weather.Weather(argument[1]).show_weather()
         else:
             print("Pas de connexion internet.")
