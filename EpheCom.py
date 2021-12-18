@@ -8,14 +8,15 @@ if __name__ == "__main__":
     script_path += "\\main.py"
     running = True
     while running:
-        attribut = input("Entrez une commande (-1 pour quitter) : ")
-        if attribut == '-1':
+        attribut = input("Entrez une commande (q pour quitter) : ")
+        if attribut == 'q':
             running = False
         else:
+            attributs = attribut.split(' ')
             # va regarder quel est l'os pour savoir pour les droits admin
             parameter = '-n' if platform.system().lower() == 'windows' else '-c'
             # execute la commande
-            command = ['python3', script_path, '-chatbot', attribut]
+            command = ['python3', script_path, '-chatbot', *attributs]
             response = subprocess.call(command)
             if response != 0:
                 print("Il y a un problème avec subprocess")
