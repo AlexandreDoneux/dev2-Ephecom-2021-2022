@@ -6,7 +6,7 @@ import subprocess
 
 if __name__ == "__main__":
     script_path = os.path.dirname(os.path.abspath(__file__))
-    script_path += "\\main.py"
+    script_path += "/main.py"  # Marche sur Windows, MacOS et Linux
     print(script_path)
     running = True
     while running:
