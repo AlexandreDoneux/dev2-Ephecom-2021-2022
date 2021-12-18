@@ -9,8 +9,7 @@ class Commande:
 
 class Itinerary(Commande):
     """
-        Itinerary claas who create constructor and methode sho_itinerary who show des informations on the distance
-         and time between two adress
+        La classe itinéraire crée un constructeur et une méthode qui permet d'afficher la distance et une estimation de temps pour un trajet
     """
     def __init__(self, origin: str = "", destination: str = ""):
         self._origin = origin
@@ -32,24 +31,21 @@ class Itinerary(Commande):
         try:
             response = requests.get(complete_url)
             response_json = response.json()
-            # print(response)
-            # print(response_json)
-            # print(response_json["routes"])
+            print(response)
+            print(response_json)
+            print(response_json["routes"])
             lien = "https://www.google.be/maps/dir/" + origin + "+/" + destination
             # print(complete_url)
             find = True
             for status in response_json["geocoded_waypoints"]:
                 if status['geocoder_status'] != "OK":
                     find = False
-                """status_return = status['geocoder_status']
-                stat = status_return"""
             if find:
                 for i in response_json["routes"]:
                     y = i['legs']
                     # print(y)
                     for j in y:
                         print(f"Vous avez  {j['duration']['text']} pour parcourir {j['distance']['text']}  ")
-
                 print(f"Cliquez pour voir l'itinéraire {lien}")
             else:
                 print("Veuillez vérifier l'orthogragphe des adresses ")
@@ -59,8 +55,8 @@ class Itinerary(Commande):
             return True
 
 
-"""f = Itinerary()
-f.show_itinerary()"""
+f = Itinerary()
+f.show_itinerary()
 
 # Alfons Moerenhoutstraat 80, Overijse
 # Rue Saint Michel 37, Bruxelles

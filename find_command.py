@@ -1,7 +1,7 @@
 # python 3.10
 # UTF-8
 
-from commandes import api_end_point, get_clean_command, get_date, get_news, get_time, help, show_info, site_search
+from commandes import itinerary, get_clean_command, get_date, get_news, get_time, help, show_info, site_search
 from commandes import get_weather
 from check_connection import check_connection
 # Compléter import
