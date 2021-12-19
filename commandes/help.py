@@ -42,13 +42,13 @@ class Help:
         self.help_info = "/info\nCommande permettant d'afficher des informations sur le module de chatbot multimédia.\n"
 
         self.help_time = "/time [eng ou fr]      []: paramètre optionnel\nCommande permettant d'afficher l'heure au" \
-                         " format anglais ou français (par défaut, l'affichage est en français)\n "
+                         " format anglais ou français (par défaut, l'affichage est en français)\n"
 
-        self.help_help = "/help [command]      []: paramètre optionnel\n Commande permettant d'afficher les aides des" \
+        self.help_help = "/help [command]      []: paramètre optionnel\nCommande permettant d'afficher les aides des" \
                          " différentes commandes. 'command' représente la commande pour laquelle vous voulez de " \
                          "l'aide. Sans commande spécifié /help renvoie les aides concernant toutes les commandes.\n"
 
-        self.help_date = "/date [eng/fr]      []: paramètre optionnel\n Commande permettant d'afficher la date au" \
+        self.help_date = "/date [eng/fr]      []: paramètre optionnel\nCommande permettant d'afficher la date au" \
                          " format anglais ou français (par défaut, l'affichage est en français)\n"
 
         self.command_help_correspond = {"help": self.help_help, "weather": self.help_weather, "news": self.help_news,

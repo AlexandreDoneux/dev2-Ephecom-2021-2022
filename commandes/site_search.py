@@ -4,6 +4,7 @@
 # Définition des classes concernant la commande de recherche sur les sites pour le bot multimedia de Ephecom
 
 import webbrowser
+import inspect   # Pour vérification de si une valeur est un objet
 
 
 def percent_encoding_url(url=""):
@@ -38,14 +39,32 @@ def no_blank_string_in_list(original_list):
     sépare les valeurs de la liste ayant un(des) espace(s) en plusieurs éléments de la liste.
     :param - original_list: liste contenant des string
     :return - result_list: Une nouvelles liste où les valeurs de original_list possédant des espaces ont étés divisés
-    en plusieurs valeurs.
+                            en plusieurs valeurs.
+            - False: Lorsqu'il y a un élément de la liste ne pouvant pas être transformé en str ou que cet élément est
+                      autre chôse qu'un int, float, str ou bool.
     """
     # normalement on en a pas besoin dans notre application vu qu'on crée toujours les objets des commandes avec une
     # liste de strings sans espaces.
 
-    original_list = [str(i) for i in original_list]  # on transforme toutes les valeurs de la liste originale au cas où
-    result_list = []
+    if type(original_list) != list:
+        # Si original_list n'est pas une liste renvoie False
+        return False
+
     for i in original_list:
+        if type(i) not in [int, float, str, bool]:
+            return False
+
+    try:
+        new_list = [str(i) for i in original_list]
+        # on transforme toutes les valeurs de la liste originale au cas où
+
+    except ValueError:
+        return False
+    except TypeError:
+        return False
+
+    result_list = []
+    for i in new_list:
         result_list.extend(i.split())  # colle la liste obtenue avec split
     return result_list
 

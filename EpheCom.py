@@ -19,6 +19,16 @@ if __name__ == "__main__":
             parameter = '-n' if platform.system().lower() == 'windows' else '-c'
             # execute la commande
             command = ['python3', script_path, '-chatbot', *attributs]
+            # Rajouté le 3.10 au cas où il y a plusieurs versions disponibles sur l'ordi de l'utilisateur
+            # et que 3.10 n'est pas la version par défaut?
             response = subprocess.call(command)
+
             if response != 0:
                 print("Il y a un problème avec subprocess")
+
+
+
+# Problème avec cette méthode (on ne va jamais intégrer comme ça):
+# -> on lance une commande via l'invite de commande de la machine. On utilise la commande python pour lancer le fichier
+# mais si le python installé sur la machine de la personne n'est pas la bonne version ou n'a pas tous les modules
+# nécessaires installés -> GROS PROBLÈME

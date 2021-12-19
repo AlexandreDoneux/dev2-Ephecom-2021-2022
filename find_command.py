@@ -98,4 +98,7 @@ def find_command(argument):
     # autre cas -> pas nos commandes
     else:
         pass
+
+if __name__ == "__main__":
+    print(check_connection())
         
