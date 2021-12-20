@@ -5,16 +5,23 @@ from get_news import News
 from get_news import Color
 
 
-class NewsTest(unittest.TestCase):
+class ColorTest(unittest.TestCase):
     def test_Color(self):
         """
         Test pour la class des couleurs pour chaque attribue se trouvant dans la class Color
         :return:Il retourne une phrase ou un mot qui est modifier en gras ou en couleur
         """
         self.assertEqual(Color.RED + "Hakizimana" + Color.END, "[91mHakizimana[0m")
-        self.assertNotEqual(Color.RED+"Article"+Color.RED, "Article")
-        self.assertEqual(Color.UNDERLINE+"Article du jour"+Color.END, "[4mArticle du jour[0m")
+        self.assertEqual(Color.UNDERLINE + "Article du jour" + Color.END, "[4mArticle du jour[0m")
 
+    def test_notEqual_color(self):
+        """
+        #Il va verifier "font-color" de la phrase
+        """
+        self.assertNotEqual(Color.RED + "Article" + Color.RED, "Article")
+
+
+class NewsTest(unittest.TestCase):
     def test__init__news(self):
         """
         #Test dans l'initialisation de la class News
@@ -22,7 +29,7 @@ class NewsTest(unittest.TestCase):
         """
         n1 = News("be", 1)
         self.assertEqual(News("be", 1).code, "be", "affiche le code du pays")
-        self.assertEqual(News("fr", 2).number, 2 , "affiche 2 articles demandé")
+        self.assertEqual(News("fr", 2).number, 2, "affiche 2 articles demandé")
 
     def test__affichage(self):
         """
@@ -38,6 +45,10 @@ class NewsTest(unittest.TestCase):
         :return:
         """
         self.assertRaises(Exception, "Le code national doit être une chaine de caractère!")
+    def test_number_news(self):
+        """
+        #Il va verifier si le parametre nombre est un chiffre
+        """
         self.assertRaises(Exception, "Le nombre doit être une chiffre !")
 
 
