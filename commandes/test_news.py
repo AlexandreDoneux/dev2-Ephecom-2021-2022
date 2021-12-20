@@ -21,6 +21,15 @@ class NewsTest(unittest.TestCase):
         :return:Il retourne rien
         """
         n1 = News("be", 1)
+        self.assertEqual(News("be", 1).code, "be", "affiche le code du pays")
+        self.assertEqual(News("fr", 2).number, 2 , "affiche 2 articles demandé")
+
+    def test__affichage(self):
+        """
+        #Affichage apres l'execusion
+        :return:
+        """
+        n1 = News()
         self.assertEqual(n1.news_of_to_day(), None)
 
     def test_codeNational_caracter(self):
@@ -30,15 +39,6 @@ class NewsTest(unittest.TestCase):
         """
         self.assertRaises(Exception, "Le code national doit être une chaine de caractère!")
         self.assertRaises(Exception, "Le nombre doit être une chiffre !")
-
-    def national_code_is_string(self):
-        """
-        Retourne un boolean si le code est bien une chaine de caractére
-        ou si number est un chiffre
-        :return:
-        """
-        self.assertTrue(News("be", 2), News("be", 2).code in str)
-        self.assertTrue(News("fr", 12), News("fr", 12).number in int)
 
 
 if __name__ == '__main__':
