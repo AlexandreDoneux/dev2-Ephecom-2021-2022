@@ -9,8 +9,10 @@ class Commande:
 
 class Itinerary(Commande):
     """
-        La classe itinéraire crée un constructeur et une méthode qui permet d'afficher la distance et une estimation de temps pour un trajet
+    La classe itinéraire crée un constructeur et une méthode qui permet d'afficher la distance et une estimation de
+    temps pour un trajet
     """
+
     def __init__(self, origin: str = "", destination: str = ""):
         self._origin = origin
         self._destination = destination
@@ -27,36 +29,29 @@ class Itinerary(Commande):
         destination = input("Destination: ").replace(' ', '+')
 
         complete_url = base_url + "origin=" + origin + "&destination=" + destination + "&key=" + key_api
-        stat = 'N OK'
+
+        status = 'NOT_FOUNDS' or 'ZERO_RESULTS'
         try:
             response = requests.get(complete_url)
             response_json = response.json()
-            print(response)
-            print(response_json)
-            print(response_json["routes"])
-            lien = "https://www.google.be/maps/dir/" + origin + "+/" + destination
-            # print(complete_url)
-            find = True
-            for status in response_json["geocoded_waypoints"]:
-                if status['geocoder_status'] != "OK":
-                    find = False
-            if find:
+            # print(response)
+            status = response_json["status"]
+            if status != "OK":
+                print("Veuillez vérifier l'orthogragphe des adresses ")
+            else:
+                # print(response_json["routes"])
+                lien = "https://www.google.be/maps/dir/" + origin + "+/" + destination
                 for i in response_json["routes"]:
                     y = i['legs']
-                    # print(y)
                     for j in y:
                         print(f"Vous avez  {j['duration']['text']} pour parcourir {j['distance']['text']}  ")
-                print(f"Cliquez pour voir l'itinéraire {lien}")
-            else:
-                print("Veuillez vérifier l'orthogragphe des adresses ")
+                        print(f"Cliquez pour voir l'itinéraire {lien}")
         except:
             print("Veuillez verifier votre connexion internet SVP")
-        if stat == "OK":
-            return True
+        return status
 
-
-f = Itinerary()
-f.show_itinerary()
+# f = Itinerary()
+# f.show_itinerary()
 
 # Alfons Moerenhoutstraat 80, Overijse
 # Rue Saint Michel 37, Bruxelles
