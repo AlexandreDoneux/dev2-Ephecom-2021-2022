@@ -25,11 +25,13 @@ class Itinerary(Commande):
 
         key_api = 'AIzaSyC0kYZMs-Eiosq_lsexBLCKgbkeXWiB95Q'
         base_url = "https://maps.googleapis.com/maps/api/directions/json?"
-        origin = input("Adresse de départ: ").replace(' ', '+')
-        destination = input("Destination: ").replace(' ', '+')
-
+        if self._origin == '' and self._destination == '':
+            origin = input("Adresse de départ: ").replace(' ', '+')
+            destination = input("Destination: ").replace(' ', '+')
+        else:
+            origin = self._origin
+            destination = self._destination
         complete_url = base_url + "origin=" + origin + "&destination=" + destination + "&key=" + key_api
-
         status = 'NOT_FOUNDS' or 'ZERO_RESULTS'
         try:
             response = requests.get(complete_url)
