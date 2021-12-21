@@ -15,7 +15,6 @@ from help import Help
 from site_search import Youtube, Linkedin, Wikipedia, no_blank_string_in_list, percent_encoding_url
 
 
-# test_unit_kevin
 class DateTest(unittest.TestCase):
     def test_fr(self):
         """Vérification de l'affichage de la date en français"""

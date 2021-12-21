@@ -21,7 +21,7 @@ class Help:
         self.command = command
         self.help_text = ""
 
-        self.help_weather = "/meteo {ville} \nCommande affichant les informations météorologiques de la ville " \
+        self.help_weather = "/weather {ville} \nCommande affichant les informations météorologiques de la ville " \
                             "spécifiée. Elle affiche la temperature et l'humidité de l'air.\n"
 
         self.help_news = "/news\nPermets à l'utilisateur une recherche sur les articles " \
