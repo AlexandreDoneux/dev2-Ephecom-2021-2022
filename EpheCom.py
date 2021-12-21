@@ -14,7 +14,9 @@ if __name__ == "__main__":
         if attribut == 'q':
             running = False
         else:
-            attributs = attribut.split(' ')
+            attributs = attribut.split()
+            # Supprimes les string vides dans attributs crées par le .split à cause de nombreux espaces dans la commande
+            attributs = [i for i in attributs if i != ""]
             # va regarder quel est l'os pour savoir pour les droits admin
             parameter = '-n' if platform.system().lower() == 'windows' else '-c'
             # execute la commande
@@ -24,6 +26,7 @@ if __name__ == "__main__":
             response = subprocess.call(command)
 
             if response != 0:
+                print(response)
                 print("Il y a un problème avec subprocess")
 
 

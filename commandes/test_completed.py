@@ -130,7 +130,7 @@ class HelpTest(unittest.TestCase):
     def test_help_all(self):
         result = "/help [command]      []: paramètre optionnel\nCommande permettant d'afficher les aides des " \
                  "différentes commandes. 'command' représente la commande pour laquelle vous voulez de l'aide. Sans " \
-                 "commande spécifié /help renvoie les aides concernant toutes les commandes.\n\n/meteo {ville} " \
+                 "commande spécifié /help renvoie les aides concernant toutes les commandes.\n\n/weather {ville} " \
                  "\nCommande affichant les informations météorologiques de la ville spécifiée. Elle affiche la " \
                  "temperature et l'humidité de l'air.\n\n/news\nPermets à l'utilisateur une recherche sur les articles " \
                  "du jour selon le pays disponible où il veut \nLes pays disponibles sont : [ae: Émirats arabes unis," \

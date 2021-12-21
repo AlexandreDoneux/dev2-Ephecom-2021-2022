@@ -72,7 +72,7 @@ class Help:
                 else:
                     self.help_text += self.command_help_correspond[i] + "\n"
 
-        else:
+        elif self.command in command_keys:
             if self.command in ["linkedin", "youtube", "wikipedia"]:
                 self.help_text += self.command_help_correspond[self.command].format(site=self.command)
 
@@ -82,9 +82,10 @@ class Help:
             else:
                 raise NoSuchCommand
 
-        return self.help_text
+        else:
+            self.help_text = "La commande spécifiée n'existe pas. \n"
 
-        # Mieux faire l'exception !!!!!
+        return self.help_text
 
 
 if __name__ == "__main__":

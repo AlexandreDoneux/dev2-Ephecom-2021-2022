@@ -72,12 +72,10 @@ def find_command(argument):
         if check_connection():
             if len(argument) == 1:
                 print("ERREUR pas de ville spécifiée")
+
             else:
-                if argument[1] == "":
-                    print("ERREUR pas de ville spécifiée")
-                else:
-                    argument[1] = " ".join(argument[1:])
-                    get_weather.Weather(argument[1]).show_weather()
+                argument[1] = " ".join(argument[1:])
+                get_weather.Weather(argument[1]).show_weather()
         else:
             print("Pas de connexion internet.")
 
@@ -93,11 +91,8 @@ def find_command(argument):
         if len(argument) == 1:
             print(help.Help())
         elif len(argument) == 2:
-            if argument[1].strip() == "":
-                print("Erreur dans les paramètres")
-            else:
-                argument[1] = get_clean_command.give_good_command(argument[1].strip())
-                print(help.Help(argument[1]))
+            argument[1] = get_clean_command.give_good_command(argument[1].strip())
+            print(help.Help(argument[1]))
         else:
             print("Erreur. N'indiquez qu'une seule commande.")
 
