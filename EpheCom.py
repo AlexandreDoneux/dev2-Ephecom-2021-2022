@@ -30,7 +30,6 @@ if __name__ == "__main__":
                 print("Il y a un problème avec subprocess")
 
 
-
 # Problème avec cette méthode (on ne va jamais intégrer comme ça):
 # -> on lance une commande via l'invite de commande de la machine. On utilise la commande python pour lancer le fichier
 # mais si le python installé sur la machine de la personne n'est pas la bonne version ou n'a pas tous les modules
