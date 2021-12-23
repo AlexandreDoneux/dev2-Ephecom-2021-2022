@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b310336-8b12-4a1a-a8a1-e0a5ba65209c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find_command.py" beforeDir="false" afterPath="$PROJECT_DIR$/find_command.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/siteSearch/siteSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/siteSearch/siteSearch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,11 +29,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration name="EpheCom" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="siteSearch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dev2-Ephecom-2021-2022" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -43,12 +39,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/siteSearch" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/EpheCom.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/siteSearch/siteSearch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -59,7 +55,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.EpheCom" />
+        <item itemvalue="Python.siteSearch" />
       </list>
     </recent_temporary>
   </component>
@@ -72,8 +68,6 @@
       <option name="presentableId" value="Default" />
       <updated>1637427521141</updated>
       <workItem from="1637427527892" duration="8207000" />
-      <workItem from="1640177570898" duration="280000" />
-      <workItem from="1640252168074" duration="333000" />
     </task>
     <servers />
   </component>
@@ -90,10 +84,8 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/dev2_Ephecom_2021_2022$EpheCom.coverage" NAME="EpheCom Coverage Results" MODIFIED="1640252415500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dev2_Ephecom_2021_2022$siteSearch.coverage" NAME="siteSearch Coverage Results" MODIFIED="1637499515671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/siteSearch" />
   </component>
 </project>
