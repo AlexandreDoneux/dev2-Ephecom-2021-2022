@@ -12,7 +12,7 @@ from show_info import ShowInfo
 from get_news import News
 from get_news import Color
 from help import Help
-from site_search import Youtube, Linkedin, Wikipedia, no_blank_string_in_list, percent_encoding_url
+from site_search import Youtube, Wikipedia, no_blank_string_in_list, percent_encoding_url
 
 
 class DateTest(unittest.TestCase):
