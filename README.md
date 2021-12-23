@@ -5,11 +5,3 @@ Projet du cours de développement informatique 2 2021-2022. Ce projet est un cha
 
 Groupe 2TL1-1
 Kevin Keurvels, Aymar Davy, Serge Folly, Alexandre Doneux
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> e146077da358ba0ac4c30b59e6180202f0ae611e
-
