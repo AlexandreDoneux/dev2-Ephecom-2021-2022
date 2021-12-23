@@ -62,8 +62,9 @@ def find_command(argument):
     elif argument[0] == '/linkedin':
         if check_connection():
             my_research = site_search.Linkedin(argument[1:])
-            my_research.create_url_linkedin()
-            my_research.go_to_site()
+            url_exist = my_research.create_url_linkedin()
+            if url_exist != -1:
+                my_research.go_to_site()
         else:
             print("Pas de connexion internet.")
 
